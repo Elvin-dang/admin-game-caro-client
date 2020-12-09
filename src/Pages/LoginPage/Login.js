@@ -43,11 +43,9 @@ function LoginPage(props){
                             <Form>
                                 <div className="form-group">
                                     <Field placeholder="Email"name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                 </div>
                                 <div className="form-group">
                                     <Field placeholder="Password" name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
-                                    <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                 </div>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Login</button>
@@ -56,7 +54,7 @@ function LoginPage(props){
                                     }
                                 </div>
                                 {status &&
-                                    <div className={'alert alert-danger'}>{status}</div>
+                                    <div className={'alert alert-danger'}>Email hoặc pasword không đúng</div>
                                 }
                             </Form>
                         )}
