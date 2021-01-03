@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Router, Route, Link, useHistory,Switch } from 'react-router-dom';
-import  PrivateRoute  from '../Components/PrivateRoute';
-import  Layout  from '../Pages/Layout/Layout';
-import  LoginPage  from '../Pages/LoginPage/Login';
-import  RegistrationPage from '../Pages/RegistrationPage/Registration';
-import  authenticationService  from '../Services/Authentication_service';
+import React from 'react';
+import { Router, Route, Switch,useHistory } from 'react-router-dom';
+import  authenticationService  from '../../Services/Authentication_service';
 import {Button} from '@material-ui/core'
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -15,9 +11,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PersonIcon from '@material-ui/icons/Person';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import Dashboard from '../Pages/DashboardPage/Dashboard';
-import Games from '../Pages/GamesPage/Games';
-import Users from '../Pages/UsersPage/Users';
+import Dashboard from '../DashboardPage/Dashboard';
+import Games from '../GamesPage/Games';
+import Users from '../UsersPage/Users';
 
 
 const drawerWidth = 240;
@@ -67,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    })
+    }),
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -77,15 +74,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
 }));
-function App () {
-    const [isLogined,setIsLogined] = useState(null);
+
+
+
+function Layout(props){
     const history = useHistory();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    useEffect(() => {
-        authenticationService.currentUser.subscribe(x => setIsLogined(x));
-    },[]);
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -98,11 +95,11 @@ function App () {
         authenticationService.logout();
         history.push('/login');
     }
+
+
     return (
-        <div>
-            {isLogined &&     
-            <div>
-                 <CssBaseline />
+        <div className={classes.root}>
+            <CssBaseline />
       <AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
         <Toolbar>
           <IconButton
@@ -152,32 +149,24 @@ function App () {
         </List>
 
       </Drawer>
-      </div>}
-      <main
+        <main
             className={clsx(classes.content, {
             [classes.contentShift]: open,
             })}>
+            <div className={classes.drawerHeader} />
             <Route>
-                <div className="jumbotron" style={{background:'white'}}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12 ">
-                                    <Switch>
-                                        <PrivateRoute exact path="/" component={Dashboard} />
-                                        <Route path="/login" component={LoginPage} />
-                                        <PrivateRoute path="/register" component={RegistrationPage} />
-                                        <PrivateRoute path="/users" component={Users} />
-                                        <PrivateRoute path="/games" component={Games} />
-                                    </Switch>    
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <Switch>
+                        <Route exact path="/" component={Dashboard} />
+                        <Route path="/users" component={Users} />
+                        <Route path="/games" component={Games} />
+                    </Switch> 
                 </div>
-            </Route>
+                </Route>   
+
         </main>
-            
-        </div>
-    ) 
+    </div>
+    );
 }
 
-export default App;
+export default Layout;
