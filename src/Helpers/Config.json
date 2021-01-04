@@ -1,3 +1,4 @@
 {
-    "apiTestLocal":"http://localhost:3001/"
+    "apiTestLocal":"http://localhost:3001/",
+    "apiHosting":"https://api-admin-game-caro.herokuapp.com/"
 }

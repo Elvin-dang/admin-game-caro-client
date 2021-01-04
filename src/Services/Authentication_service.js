@@ -18,8 +18,9 @@ function login(email, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ "email":email, "password":password })
     };
-    console.log(`${config.apiTestLocal}`);
-    return fetch(`${config.apiTestLocal}` +"api/admin/signin", requestOptions)
+    
+    // return fetch(`${config.apiTestLocal}` +"api/admin/signin", requestOptions)
+    return fetch(`${config.apiHosting}` +"api/admin/signin", requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
