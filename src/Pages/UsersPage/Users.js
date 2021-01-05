@@ -9,9 +9,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import {Button,Input} from '@material-ui/core';
+import { Button, Input } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import userApi from '../../api/userApi';
 import swal from 'sweetalert';
+
 const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.common.black,
@@ -169,7 +171,7 @@ function Users(props){
                     {listUsers !== null ? listUsers.map((row) => (
                         <StyledTableRow key={row._id}>
                         <StyledTableCell component="th" scope="row">
-                            {row.name}
+                            <Link to={{ pathname: `/user/${row._id}`, user: row }}>{row.name}</Link>
                         </StyledTableCell>
                         <StyledTableCell align="right">{row.accessType}</StyledTableCell>
                         <StyledTableCell align="right">{row.email}</StyledTableCell>

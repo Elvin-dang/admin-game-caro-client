@@ -59,6 +59,10 @@ const userApi = {
     getAll:()=>{
         const url = `user/getAll`;
         return axiosClient.get(url);
-    }
+    },
+    getUserById: (userId) => {
+        const url = `user/${userId}`;
+        return axiosClient.get(url);
+    },
 };
 export default userApi;
