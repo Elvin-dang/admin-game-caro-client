@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Button, Input } from '@material-ui/core';
+import { Button, Input, CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import userApi from '../../api/userApi';
 import swal from 'sweetalert';
@@ -36,6 +36,11 @@ const useStyles = makeStyles({
     table: {
       minWidth: 700,
     },
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
 });
 function Users(props){
     const classes = useStyles();
@@ -135,6 +140,7 @@ function Users(props){
             activeUser(id);
         }
     }
+    if(listUsers === null) return <div className={classes.root}><CircularProgress /></div>
     return (
         <div >
             <div>
