@@ -1,4 +1,4 @@
-import React,{ useState, useEffect} from 'react';
+import React,{ useState, useEffect, useRef } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {Button} from '@material-ui/core';
 import gameApi from '../../api/gameApi';
+import MyDialog from '../../Components/MyDialog';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -36,6 +37,17 @@ const useStyles = makeStyles({
 function Games(props){
     const classes = useStyles();
     const [listGames,setListGames] = useState(null);
+    const [openChat, setOpenChat] = useState(false);
+    const [messOnDialog, setMessOnDialog] = useState(null);
+    const descriptionElementRef = useRef(null);
+    useEffect(() => {
+        if (openChat) {
+          const { current: descriptionElement } = descriptionElementRef;
+          if (descriptionElement !== null) {
+            descriptionElement.focus();
+          }
+        }
+      }, [openChat]);
     useEffect(()=>{
 		const fetchUser = async () => {
             try {
@@ -47,10 +59,16 @@ function Games(props){
         }
         fetchUser();
 	}, []);
-
-    console.log(listGames);
+    const handleClickOpenChat = (row) => () => {
+      setMessOnDialog(row);
+      setOpenChat(true);
+    };
+    const handleClose = () => {
+        setOpenChat(false);
+    };
     return (
         <div >
+          <MyDialog openChat={openChat} game={messOnDialog} handleClose={handleClose} descriptionElementRef={descriptionElementRef} />
             <div>
                 <h3>Danh sách các bàn chơi</h3>
             </div>
@@ -74,7 +92,7 @@ function Games(props){
                         <StyledTableCell align="right">{row.player1.name}</StyledTableCell>
                         <StyledTableCell align="right">{row.player2.name}</StyledTableCell>
                         <StyledTableCell align="right">{row.winner === 1 ? row.player1.name : row.player2.name}</StyledTableCell>
-                        <StyledTableCell align="right"><Button color="primary">Xem Chat</Button></StyledTableCell>
+                        <StyledTableCell align="right"><Button onClick={handleClickOpenChat(row)} color="primary">Xem Chat</Button></StyledTableCell>
                         </StyledTableRow>
                     )) : null}
                     </TableBody>

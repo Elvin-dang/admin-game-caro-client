@@ -1,7 +1,7 @@
 import React,{ useState, useEffect, useRef } from 'react';
 import Moment from 'react-moment';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Button, Grid, Typography, Container, CardContent, CardActions, CardHeader, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { Card, Button, Grid, Typography, Container, CardContent, CardActions, CardHeader, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import Message from './MessageItem';
 const useStyles = makeStyles((theme) => ({
     backgroundWin: {
@@ -100,7 +100,7 @@ export default function HistoryItem(props) {
         aria-describedby="scroll-dialog-description"
         ><DialogTitle id="scroll-dialog-title">Chat history</DialogTitle>
             <DialogContent dividers={true}>
-                <DialogContentText
+                <div
                 id="scroll-dialog-description"
                 ref={descriptionElementRef}
                 tabIndex={-1}
@@ -110,7 +110,7 @@ export default function HistoryItem(props) {
                     <Message key={index} message={item}/>
                 ) : <h2>Không có gì để hiện thị</h2>}
                 </div>
-                </DialogContentText>
+                </div>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">

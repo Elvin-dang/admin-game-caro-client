@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import userApi from '../../api/userApi';
 import gameApi from '../../api/gameApi';
+import { Link } from 'react-router-dom';
 
 import {
     Chart,
@@ -107,7 +108,6 @@ function Dashboard(props){
 
         }
     }
-    console.log(topPlayers);
 
     if(listGames.length > 0)
     {
@@ -222,9 +222,9 @@ function Dashboard(props){
                                     {topPlayers !== null ? topPlayers.map((row) => (
                                         <StyledTableRow key={row._id}>
                                         <StyledTableCell component="th" scope="row">
-                                            {row._id}
+                                            <Link to={{ pathname: `/user/${row._id}` }}>{row._id}</Link>
                                         </StyledTableCell>
-                                        <StyledTableCell align="right">{row.name}</StyledTableCell>
+                                        <StyledTableCell align="right"><Link to={{ pathname: `/user/${row._id}` }}>{row.name}</Link></StyledTableCell>
                                         </StyledTableRow>
                                     )) : null}
                                     </TableBody>   

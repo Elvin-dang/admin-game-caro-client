@@ -138,15 +138,15 @@ function App () {
         </div>
         <Divider />
         <List>
-            <ListItem button onClick={()=>history.push('/')}>
+            <ListItem button onClick={()=>{ history.push('/'); handleDrawerClose(); }}>
               <ListItemIcon><DashboardIcon/></ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button onClick={()=>history.push('/users')}>
+            <ListItem button onClick={()=> { history.push('/users'); handleDrawerClose(); }}>
               <ListItemIcon><PersonIcon/></ListItemIcon>
               <ListItemText primary="Users" />
             </ListItem>
-            <ListItem button onClick={()=> history.push('/games')}>
+            <ListItem button onClick={()=> { history.push('/games'); handleDrawerClose(); }}>
               <ListItemIcon><SportsEsportsIcon/></ListItemIcon>
               <ListItemText primary="Games" />
             </ListItem>
