@@ -65,17 +65,13 @@ export default function HistoryItem(props) {
     const conditionRenderWinner = () =>{
         switch(matchResult) {
             case 0:
-                return <Typography align="center" variant="h4" style={{color: '#8c898a'}} gutterBottom>
-                Hòa
-                 </Typography>;
+                return <Typography align="center" variant="h4" style={{color: '#8c898a'}} gutterBottom>Hòa</Typography>;
             case 1:
-                return
-                <Typography align="center" variant="h4" style={{color: '#2bba64' }} gutterBottom>
+                return <Typography align="center" variant="h4" style={{color: '#2bba64' }} gutterBottom>
                             Chiến thắng
                 </Typography>
             case 2:
-                return
-                <Typography align="center" variant="h4" style={{color: '#911332'}} gutterBottom>
+                return <Typography align="center" variant="h4" style={{color: '#911332'}} gutterBottom>
                             Thua cuộc
                 </Typography>
         }
