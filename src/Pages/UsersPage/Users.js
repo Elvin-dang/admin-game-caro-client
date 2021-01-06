@@ -76,7 +76,7 @@ function Users(props){
             {
                 for(let a = 0 ; a<listUsers.length;a++)
                 {
-                    if(listUsers[a].name.toLowerCase()===keySearch.toLowerCase())
+                    if(listUsers[a].name.toLowerCase().indexOf(keySearch.toLowerCase())>=0)
                     listSearch.push(listUsers[a]);
                 }
             }
@@ -84,7 +84,7 @@ function Users(props){
             {
                 for(let a = 0 ; a<listUsers.length;a++)
                 {
-                    if(listUsers[a].email.toLowerCase()===keySearch.toLowerCase())
+                    if(listUsers[a].email.toLowerCase().indexOf(keySearch.toLowerCase())>=0)
                     listSearch.push(listUsers[a]);
                 }
             }
