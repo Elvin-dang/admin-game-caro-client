@@ -18,6 +18,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import Dashboard from '../Pages/DashboardPage/Dashboard';
 import Games from '../Pages/GamesPage/Games';
 import Users from '../Pages/UsersPage/Users';
+import DetailUser from '../Pages/UsersPage/DetailUser'
 
 
 const drawerWidth = 240;
@@ -137,15 +138,15 @@ function App () {
         </div>
         <Divider />
         <List>
-            <ListItem button onClick={()=>history.push('/')}>
+            <ListItem button onClick={()=>{ history.push('/'); handleDrawerClose(); }}>
               <ListItemIcon><DashboardIcon/></ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button onClick={()=>history.push('/users')}>
+            <ListItem button onClick={()=> { history.push('/users'); handleDrawerClose(); }}>
               <ListItemIcon><PersonIcon/></ListItemIcon>
               <ListItemText primary="Users" />
             </ListItem>
-            <ListItem button onClick={()=> history.push('/games')}>
+            <ListItem button onClick={()=> { history.push('/games'); handleDrawerClose(); }}>
               <ListItemIcon><SportsEsportsIcon/></ListItemIcon>
               <ListItemText primary="Games" />
             </ListItem>
@@ -168,6 +169,7 @@ function App () {
                                         <PrivateRoute path="/register" component={RegistrationPage} />
                                         <PrivateRoute path="/users" component={Users} />
                                         <PrivateRoute path="/games" component={Games} />
+                                        <PrivateRoute exact path="/user/:id" component={DetailUser}/>
                                     </Switch>    
                             </div>
                         </div>
