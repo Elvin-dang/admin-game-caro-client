@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {Button} from '@material-ui/core';
+import {Button, CircularProgress} from '@material-ui/core';
 import gameApi from '../../api/gameApi';
 import MyDialog from '../../Components/MyDialog';
 
@@ -32,6 +32,11 @@ const StyledTableCell = withStyles((theme) => ({
 const useStyles = makeStyles({
     table: {
       minWidth: 700,
+    },
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
 });
 function Games(props){
@@ -66,6 +71,7 @@ function Games(props){
     const handleClose = () => {
         setOpenChat(false);
     };
+    if(listGames === null) return <div className={classes.root}><CircularProgress /></div>
     return (
         <div >
           <MyDialog openChat={openChat} game={messOnDialog} handleClose={handleClose} descriptionElementRef={descriptionElementRef} />

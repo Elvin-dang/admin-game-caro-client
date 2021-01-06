@@ -1,12 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import {Button,Card,CardContent,Grid,Typography,Paper } from '@material-ui/core'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, LinearProgress } from '@material-ui/core';
 import userApi from '../../api/userApi';
 import gameApi from '../../api/gameApi';
 import { Link } from 'react-router-dom';
@@ -197,6 +192,7 @@ function Dashboard(props){
                         <Grid container pacing={2} style = {{marginTop:'20px',marginBottom:'10px',display: 'inline'}}>
                             <h3  style={{margin:'20px'}}> Số game trong tuần </h3>
                             <Paper>
+                                {listGames.length === 0 && <LinearProgress />}
                                 <Chart
                                 data={dataChart}>
                                 <ArgumentAxis />
@@ -210,6 +206,7 @@ function Dashboard(props){
                         </Grid>
                         <Grid container pacing={2} style = {{marginTop:'20px',marginBottom:'10px',display: 'inline'}}>
                             <h3  style={{margin:'20px',marginTop:'40px'}}> Top Người chơi </h3>
+                            {topPlayers.length === 0 && <LinearProgress />}
                             <TableContainer component={Paper}>
                                 <Table className={classes.table} aria-label="customized table">
                                     <TableHead>
