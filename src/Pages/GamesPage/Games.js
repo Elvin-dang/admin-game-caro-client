@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import {Button, CircularProgress} from '@material-ui/core';
 import gameApi from '../../api/gameApi';
 import MyDialog from '../../Components/MyDialog';
+import Moment from 'react-moment';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -93,7 +94,7 @@ function Games(props){
                     {listGames !== null ? listGames.map((row) => (
                         <StyledTableRow key={row._id}>
                         <StyledTableCell component="th" scope="row">
-                            {row.date}
+                            <Moment>{row.date}</Moment>
                         </StyledTableCell>
                         <StyledTableCell align="right">{row.player1.name}</StyledTableCell>
                         <StyledTableCell align="right">{row.player2.name}</StyledTableCell>
