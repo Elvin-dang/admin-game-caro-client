@@ -25,6 +25,14 @@ const userApi = {
         const url = `user/block/${id}`;
         return axiosClient.patch(url);
     },
+    activeUndefine: (id) => {
+        const url = `user/activeUndefine/${id}`;
+        return axiosClient.patch(url);
+    },
+    blockUndefine: (id) => {
+        const url = `user/blockUndefine/${id}`;
+        return axiosClient.patch(url);
+    },
     forgetPassword: (email) => {
         const url = 'user/forgetPassword';
         return axiosClient.post(url, {

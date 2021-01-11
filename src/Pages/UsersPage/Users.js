@@ -77,7 +77,7 @@ function Users(props){
         {
             setIsSearch(true);
             let listSearch=[];
-            if(typeSearch == 'name')
+            if(typeSearch === 'name')
             {
                 for(let a = 0 ; a<listUsers.length;a++)
                 {
@@ -85,7 +85,7 @@ function Users(props){
                     listSearch.push(listUsers[a]);
                 }
             }
-            if(typeSearch == 'email')
+            if(typeSearch === 'email')
             {
                 for(let a = 0 ; a<listUsers.length;a++)
                 {
@@ -100,24 +100,23 @@ function Users(props){
     const handleUnSearch = () =>{
         setIsSearch(false);
     }
+
     const activeUser = async (id) => {
         try {
             const response = await userApi.active(id);
-            console.log(response);
             if(response.result === true){
                 swal("Thành công!",'Đã mở khóa người chơi!','success');
             }else{
                 swal("Lỗi!",'Đã có lỗi xảy ra!','error');
             }
         } catch(err) {
-
+            swal("Lỗi!",'Đã có lỗi xảy ra!','error');
         }
     }
 
     const blockUser = async (id) => {
         try {
             const response = await userApi.block(id);
-            console.log(response);
 
             if(response.result === true){
                 swal("Thành công!",'Đã khóa người chơi!','success');
@@ -125,21 +124,56 @@ function Users(props){
                 swal("Lỗi!",'Đã có lỗi xảy ra!','error');
             }
         } catch(err) {
+            swal("Lỗi!",'Đã có lỗi xảy ra!','error');
+        }
+    }
 
+    const activeUndefineUser = async (id) => {
+        try {
+            const response = await userApi.activeUndefine(id);
+            if(response.result === true){
+                swal("Thành công!",'Đã mở khóa người chơi!','success');
+            }else{
+                swal("Lỗi!",'Đã có lỗi xảy ra!','error');
+            }
+        } catch(err) {
+            swal("Lỗi!",'Đã có lỗi xảy ra!','error');
+        }
+    }
+
+    const blockUndefineUser = async (id) => {
+        try {
+            const response = await userApi.blockUndefine(id);
+
+            if(response.result === true){
+                swal("Thành công!",'Đã khóa người chơi!','success');
+            }else{
+                swal("Lỗi!",'Đã có lỗi xảy ra!','error');
+            }
+        } catch(err) {
+            swal("Lỗi!",'Đã có lỗi xảy ra!','error');
         }
     }
 
     const handleChangeActiveStatus = (id,status) =>{
-        console.log(status);
-        if(status==1 || status==2)
+        if(status === '1')
+        {
+            blockUndefineUser(id);
+        }
+        else if (status === '2')
         {
             blockUser(id);
         }
-        else
+        else if (status === '3')
         {
             activeUser(id);
         }
+        else if (status === '4')
+        {
+            activeUndefineUser(id);
+        }
     }
+
     if(listUsers === null) return <div className={classes.root}><CircularProgress /></div>
     return (
         <div >
