@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core';
+import {Button, Dialog, DialogTitle, DialogActions, DialogContent, Typography } from '@material-ui/core';
 import Message from './MessageItem';
 
 const useStyles = makeStyles({
@@ -24,7 +24,7 @@ function MyDialog(props){
     scroll='paper'
     aria-labelledby="scroll-dialog-title"
     aria-describedby="scroll-dialog-description"
-    ><DialogTitle id="scroll-dialog-title">Chat history</DialogTitle>
+    ><DialogTitle id="scroll-dialog-title">Nội dung chat</DialogTitle>
         <DialogContent dividers={true}>
             <div
             id="scroll-dialog-description"
@@ -34,13 +34,13 @@ function MyDialog(props){
             <div className={classes.messList}>
             {game.chat.length ? game.chat.map((item, index) =>
                 <Message key={index} message={item}/>
-            ) : <h1>Không có gì để hiện thị</h1>}
+            ) : <Typography variant="h5" align="center">Không có gì để hiện thị</Typography>}
             </div>
             </div>
         </DialogContent>
         <DialogActions>
             <Button onClick={handleClose} color="primary">
-            Cancel
+            Hủy
             </Button>
         </DialogActions>
     </Dialog>)

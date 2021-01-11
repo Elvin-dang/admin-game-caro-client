@@ -36,17 +36,10 @@ export default function DetailUser (props){
                         <ArrowBackIcon></ArrowBackIcon>
                     </IconButton>
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                     <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                     Thông tin cá nhân
                     </Typography>
-                </Grid>
-                <Grid item xs={1} >
-                    <Link to={`/user/${user._id}`}>
-                        <IconButton style={{height: '100%'}}>
-                            <ArrowForwardIcon></ArrowForwardIcon>
-                        </IconButton>
-                    </Link>
                 </Grid>
             </Grid>
           </Container>

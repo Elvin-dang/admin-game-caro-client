@@ -146,10 +146,10 @@ function Dashboard(props){
                         <Grid container justify="center" spacing={2} style = {{marginTop:'10px',marginBottom:'40px'}}>
                             <Card style={{width:'250px',height:'150px',marginRight:'20px',backgroundImage:'linear-gradient(to left bottom,#FCDDC0, #FF9B40)',borderRadius:'10px'}}>
                                 <CardContent>
-                                    <Typography  color="textSecondary" gutterBottom>
+                                    <Typography  color="textSecondary" gutterBottom align="center">
                                     Tổng số người dùng
                                     </Typography>
-                                    <Typography variant="h5" component="h2">
+                                    <Typography variant="h5" component="h2" align="center">
                                     {listUsers!== undefined ? listUsers.length : 0}
                                     </Typography>
                                     <img src = "chart-img.svg" alt="" />
@@ -157,10 +157,10 @@ function Dashboard(props){
                             </Card>
                             <Card style={{width:'250px',height:'150px',marginRight:'20px',backgroundImage:'linear-gradient(to left bottom,#A0F6BD, #2EB85C)',borderRadius:'10px'}}>
                                 <CardContent>
-                                    <Typography  color="textSecondary" gutterBottom>
+                                    <Typography  color="textSecondary" gutterBottom align="center">
                                     Người dùng đã kích hoạt
                                     </Typography>
-                                    <Typography variant="h5" component="h2">
+                                    <Typography variant="h5" component="h2" align="center">
                                     {actived}
                                     </Typography>
                                     <img src = "chart-img.svg" alt="" />
@@ -168,10 +168,10 @@ function Dashboard(props){
                             </Card>
                             <Card style={{width:'250px',height:'150px',marginRight:'20px',backgroundImage:'linear-gradient(to left bottom,#E2D5ED, #79818D)',borderRadius:'10px'}}>
                                 <CardContent>
-                                    <Typography  color="textSecondary" gutterBottom>
+                                    <Typography  color="textSecondary" gutterBottom align="center">
                                     Người dùng chưa kích hoạt
                                     </Typography>
-                                    <Typography variant="h5" component="h2">
+                                    <Typography variant="h5" component="h2" align="center">
                                     {disactived}
                                     </Typography>
                                     <img src = "chart-img.svg" alt="" />
@@ -179,10 +179,10 @@ function Dashboard(props){
                             </Card>
                             <Card style={{width:'250px',height:'150px',marginRight:'20px',backgroundImage:'linear-gradient(to left bottom,#F68888, #E55353)',borderRadius:'10px'}}>
                                 <CardContent>
-                                    <Typography  color="textSecondary" gutterBottom>
+                                    <Typography  color="textSecondary" gutterBottom align="center">
                                     Người dùng đã khóa
                                     </Typography>
-                                    <Typography variant="h5" component="h2">
+                                    <Typography variant="h5" component="h2" align="center">
                                     {blocked}
                                     </Typography>
                                     <img src = "chart-img.svg" alt="" />

@@ -94,7 +94,7 @@ export default function HistoryItem(props) {
         scroll='paper'
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
-        ><DialogTitle id="scroll-dialog-title">Chat history</DialogTitle>
+        ><DialogTitle id="scroll-dialog-title">Nội dung chat</DialogTitle>
             <DialogContent dividers={true}>
                 <div
                 id="scroll-dialog-description"
@@ -104,13 +104,13 @@ export default function HistoryItem(props) {
                 <div className={classes.messList}>
                 {item.chat.length ? item.chat.map((item, index) =>
                     <Message key={index} message={item}/>
-                ) : <h2>Không có gì để hiện thị</h2>}
+                ) : <Typography variant="h5" align="center">Không có gì để hiện thị</Typography>}
                 </div>
                 </div>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">
-                Cancel
+                Hủy
                 </Button>
             </DialogActions>
         </Dialog>

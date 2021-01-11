@@ -77,7 +77,7 @@ function Games(props){
         <div >
           <MyDialog openChat={openChat} game={messOnDialog} handleClose={handleClose} descriptionElementRef={descriptionElementRef} />
             <div>
-                <h3>Danh sách các bàn chơi</h3>
+                <h3>Danh sách các trận đấu</h3>
             </div>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">
@@ -94,7 +94,7 @@ function Games(props){
                     {listGames !== null ? listGames.map((row) => (
                         <StyledTableRow key={row._id}>
                         <StyledTableCell component="th" scope="row">
-                            <Moment>{row.date}</Moment>
+                            <Moment format="ddd DD/MM/YYYY hh:mm:ss">{row.date}</Moment>
                         </StyledTableCell>
                         <StyledTableCell align="right">{row.player1.name}</StyledTableCell>
                         <StyledTableCell align="right">{row.player2.name}</StyledTableCell>
