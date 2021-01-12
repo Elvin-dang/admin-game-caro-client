@@ -125,11 +125,11 @@ function Dashboard(props){
     {
         for(let a = 0 ; a < listUsers.length ; a++)
             {
-                if(listUsers[a].active == 1)
+                if(listUsers[a].active === '1')
                 disactived++;
-                else if(listUsers[a].active==2)
+                else if(listUsers[a].active === '2')
                 actived++;
-                else if(listUsers[a].active==3)
+                else if(listUsers[a].active === '3' || listUsers[a].active === '4')
                 blocked++;
             }
     }
